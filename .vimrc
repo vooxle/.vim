@@ -25,7 +25,9 @@ let Tlist_Show_One_File = 1            "只显示当前文件的taglist，默认
 let Tlist_Exit_OnlyWindow = 1          "如果taglist是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist
 let Tlist_GainFocus_On_ToggleOpen = 1  "打开taglist时，光标保留在taglist窗口
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'  "设置ctags命令的位置
+" 根据自己环境配置该选项
+" let Tlist_Ctags_Cmd='/usr/local/bin/ctags'  "设置ctags命令的位置
+" let Tlist_Ctags_Cmd='/usr/bin/ctags'  "设置ctags命令的位置
 let Tlist_Auto_Open = 1  " 启动vim后自动打开taglist窗口
 noremap <F8> :TlistToggle<CR>  " 设置taglist打开关闭的快捷键F8
 noremap <F6> :!ctags -R<CR     " 更新ctags标签文件快捷键设置
@@ -79,26 +81,31 @@ nnoremap <F4> :YcmForceCompileAndDiagnostics<CR>	"force recomile with syntastic
 "let g:miniBufExplModSelTarget =1
 
 " vim setting
-set nocompatible
-set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=4
-set autoindent
-set cindent
-set nu
-syntax on
-set showmode
-set showcmd
-set encoding=utf-8 
-set t_Co=256
-filetype indent on
-set shiftwidth=4
-set showmatch
-set hlsearch
-set autochdir
-set wildmenu
-set wildmode=longest:list,full
-set mouse=a
+set nocompatible "不使用兼容模式
+set backspace=indent,eol,start "不兼容vi的backspace和方向键
+set tabstop=4 "tabstop 选项只修改 tab 字符的显示宽度，不修改按 Tab 键的行为
+set softtabstop=4 "选项修改按 Tab 键的行为，不修改 tab 字符的显示宽度。具体行为跟 tabstop 选项值有关
+" set expandtab "选项把插入的 tab 字符替换成特定数目的空格。具体空格数目跟 tabstop 选项值有关
 
-set tags=/Users/vooxle/workspace/IntelligentInfusionAlarm/tags
+set autoindent  "自动缩进
+set cindent "按照 C 语言的语法，自动地调整缩进的长度
+set number  "显示行号
+set showmode "在屏幕底部显示当前所处的模式
+set showcmd "将会在输入命令时，在屏幕底部显示出部分命令
+set encoding=utf-8 "设置编码为utf-8
+set t_Co=256  "启用256色
+set shiftwidth=4 "在文本上按下>>（增加一级缩进）、<<（取消一级缩进）或者==（取消全部缩进）时，每一级的字符数
+set showmatch "光标遇到圆括号、方括号、大括号时，自动高亮对应的另一个圆括号、方括号和大括号
+set hlsearch "搜索时，高亮显示匹配结果
+set autochdir "自动切换工作目录。这主要用在一个 Vim 会话之中打开多个文件的情况，默认的工作目录是打开的第一个文件的目录。该配置可以将工作目录自动切换到，正在编辑的文件的目录
+set wildmenu "命令模式下，底部操作指令按下 Tab 键自动补全
+set wildmode=longest:list,full "第一次按下 Tab，会显示所有匹配的操作指令的清单；第二次按下 Tab，会依次选择各个指令
+set mouse=a "启用鼠标
+set cursorline "光标所在的当前行高亮
+"set spell spelllang=en_us "打开英语单词的拼写检查
+set autoread "打开文件监视。如果在编辑过程中文件发生外部改变（比如被别的编辑器编辑了），就会发出提示
+set incsearch "输入搜索模式时，每输入一个字符，就自动跳到第一个匹配的结果
+
+syntax on "语法高亮
+filetype indent on "开启文件类型检查，并且载入与该类型对应的缩进规则
 
