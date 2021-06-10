@@ -22,7 +22,7 @@ sudo apt-get install ctags cscope
 
 3、在用户根目录下创建.vim目录，clone仓库代码到该目录
 ```bash
-git clone https://github.com/vooxle/.vim
+git clone https://github.com/carlyleliu/.vim
 ```
 
 4、安装YouCompleteMe
